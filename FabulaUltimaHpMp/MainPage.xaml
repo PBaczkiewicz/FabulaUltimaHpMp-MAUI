@@ -39,8 +39,11 @@
                 <Label x:Name="MaxHpEntryLabel" Text="Max HP" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="End" FontSize="18"/>
                 <Entry x:Name="MaxHpEntry" Text="" Grid.Row="1" Grid.Column="0" Keyboard="Numeric"  Completed="MaxHpEntry_Completed" MaxLength="5" Placeholder="Input HP"/>
 
-                <Label  Text="Current HP" Grid.Row="4" Grid.Column="1" FontSize="10" HorizontalOptions="Center"/>
-                <Label x:Name="currentHpCounter" Text="" Grid.Row="5" Grid.Column="1" HorizontalOptions="Center" TextColor="Red" FontSize="20"/>
+                <Label  Text="Current HP" Grid.Row="4" Grid.Column="1" FontSize="10" HorizontalOptions="Start"/>
+                
+                <Label x:Name="currentHpCounter" Text="" Grid.Row="5" Grid.Column="1" HorizontalOptions="Start" TextColor="Red" FontSize="20"/>
+                <Label x:Name="hpChange" Text="" Grid.Row="5" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" TextColor="PaleVioletRed" IsVisible="false"/>
+
                 <Label Text="Crisis :" Grid.Column="0" Grid.Row="6" HorizontalOptions="Center" VerticalOptions="End"/>
                 <Label x:Name="crisisHp" Text="" Grid.Row="7" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Start" FontAttributes="Bold" TextColor="DarkRed" FontSize="20"/>
                 <Button x:Name="buttonHpp1" Text="+1" Grid.Column="1" Grid.Row="3" BackgroundColor="PaleVioletRed" Clicked="buttonHpp1_Clicked" />
@@ -58,7 +61,10 @@
                 <Entry x:Name="MaxMpEntry" Text="" Grid.Row="1" Grid.Column="2" Keyboard="Numeric" Completed="MaxMpEntry_Completed" MaxLength="5" Placeholder="Input MP"/>
                 
                 <Label Text="Current MP" Grid.Row="4" Grid.Column="3" FontSize="10" HorizontalOptions="Center"/>
-                <Label x:Name="currentMpCounter" Text="" Grid.Row="5" Grid.Column="3" HorizontalOptions="Center" TextColor="CornflowerBlue" FontSize="20"/>
+
+                <Label x:Name="currentMpCounter" Text="" Grid.Row="5" Grid.Column="3" HorizontalOptions="Start" TextColor="CornflowerBlue" FontSize="20"/>
+                <Label x:Name="mpChange" Text="" Grid.Row="5" Grid.Column="3" HorizontalOptions="End" VerticalOptions="Center" TextColor="CornflowerBlue" IsVisible="false"/>
+                
                 <Button x:Name="buttonMpp1" Text="+1" Grid.Column="3" Grid.Row="3" BackgroundColor="CornflowerBlue" Clicked="buttonMpp1_Clicked"/>
                 <Button x:Name="buttonMpp2" Text="+2" Grid.Column="3" Grid.Row="2" BackgroundColor="CornflowerBlue" Clicked="buttonMpp2_Clicked"/>
                 <Button x:Name="buttonMpp5" Text="+5" Grid.Column="3" Grid.Row="1" BackgroundColor="CornflowerBlue" Clicked="buttonMpp5_Clicked"/>

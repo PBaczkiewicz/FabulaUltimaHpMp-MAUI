@@ -69,11 +69,20 @@ namespace FabulaUltimaHpMp
         #endregion
         private void ModifyHP(int hp)
         {
-            if (currentHP + hp > maximumHP) currentHP = maximumHP;
-            else if (currentHP + hp < 0) currentHP = 0;
-            else { currentHP += hp; }
+            if (hpTicksRemaining <= 5) hpIncrement = 0;
+
+            if (currentHP + hp >= maximumHP) { hpIncrement += maximumHP - currentHP; currentHP = maximumHP; }
+            else if (currentHP + hp < 0) { hpIncrement += 0-currentHP;  currentHP = 0; }
+            else { currentHP += hp; hpIncrement += hp; }
             currentHpCounter.Text = currentHP.ToString();
             if (currentHP <= criticalHp) { currentHpCounter.Text += "!"; }
+            
+            hpTicksRemaining = 40;
+            hpChange.Text = "";
+            if (hpIncrement > 0) hpChange.Text += "+";
+            hpChange.Text += hpIncrement.ToString();
+            
+            HpModifying();
         }
         #region Plus/minus MP buttons
         private void buttonMpp1_Clicked(object sender, EventArgs e) { ModifyMP(1); }
@@ -87,16 +96,25 @@ namespace FabulaUltimaHpMp
         #endregion
         private void ModifyMP(int mp)
         {
-            if (currentMP + mp > maximumMP) currentMP = maximumMP;
-            else if (currentMP + mp < 0) currentMP = 0;
-            else { currentMP += mp; }
-            currentHpCounter.Text = currentMP.ToString();
+            if (mpTicksRemaining <= 5) mpIncrement = 0;
+
+            if (currentMP + mp > maximumMP) { mpIncrement += maximumMP - currentMP; currentMP = maximumMP; }
+            else if (currentMP + mp < 0) { mpIncrement += 0 - currentMP; currentMP = 0; }
+            else { currentMP += mp; mpIncrement += mp; }
+            currentMpCounter.Text = currentMP.ToString();
+
+            mpTicksRemaining = 40;
+            mpChange.Text = "";
+            if (mpIncrement > 0) mpChange.Text += "+";
+            mpChange.Text += mpIncrement.ToString();
+
+            MpModifying();
         }
 
         async void hpResetButton_Clicked(object sender, EventArgs e)
         {
-            bool answer = await DisplayAlert("Warning!", "Do you want to reset HP?", "No", "Yes");
-            if (!answer)
+            bool answer = await DisplayAlert("Warning!", "Do you want to reset HP?", "Yes", "No");
+            if (answer)
             {
                 hpButtons = new List<Button>() { buttonHpm1, buttonHpm2, buttonHpm5, buttonHpm10, buttonHpp1, buttonHpp2, buttonHpp5, buttonHpp10 };
                 foreach (Button button in hpButtons) { button.IsEnabled = false; }
@@ -111,8 +129,8 @@ namespace FabulaUltimaHpMp
 
         async void mpResetButton_Clicked(object sender, EventArgs e)
         {
-            bool answer = await DisplayAlert("Warning!", "Do you want to reset MP?", "No", "Yes");
-            if (!answer)
+            bool answer = await DisplayAlert("Warning!", "Do you want to reset MP?", "Yes", "No");
+            if (answer)
             {
                 mpButtons = new List<Button>() { buttonMpm1, buttonMpm2, buttonMpm5, buttonMpm10, buttonMpp1, buttonMpp2, buttonMpp5, buttonMpp10 };
                 foreach (Button button in mpButtons) { button.IsEnabled = false; }
@@ -123,6 +141,50 @@ namespace FabulaUltimaHpMp
                 currentMpCounter.Text = "";
             }
         }
+
+        int hpTicksRemaining = 0;
+        int hpIncrement = 0;
+        bool hpModVisible = false;
+        async void HpModifying()
+        {
+            if (hpModVisible) return;
+            hpModVisible = true;
+            hpChange.IsVisible = true;
+            while(hpTicksRemaining>5)
+            {
+                if (hpTicksRemaining >= 15) hpChange.FontSize = 15;
+                else hpChange.FontSize = hpTicksRemaining;
+                await Task.Delay(100);
+                hpTicksRemaining--;
+            }
+            hpIncrement = 0;
+            hpModVisible = false;
+            hpChange.IsVisible = false;
+            
+        }
+
+
+        int mpTicksRemaining = 0;
+        int mpIncrement = 0;
+        bool mpModVisible = false;
+        async void MpModifying()
+        {
+            if (mpModVisible) return;
+            mpModVisible = true;
+            mpChange.IsVisible = true;
+            while (mpTicksRemaining > 5)
+            {
+                if (mpTicksRemaining >= 15) mpChange.FontSize = 15;
+                else mpChange.FontSize = mpTicksRemaining;
+                await Task.Delay(100);
+                mpTicksRemaining--;
+            }
+            mpIncrement = 0;
+            mpModVisible = false;
+            mpChange.IsVisible = false;
+
+        }
+
     }
 
 }
