@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FabulaUltimaHpMp.MainPage" BackgroundColor="Black">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Label/>
+            <Grid RowSpacing="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Max HP" Grid.Row="4" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" FontSize="10"/>
+                <Label x:Name="MaxHpReminder" Text="" Grid.Row="5" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label x:Name="MaxHpEntryLabel" Text="Max HP" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="End" FontSize="18"/>
+                <Entry x:Name="MaxHpEntry" Text="" Grid.Row="1" Grid.Column="0" Keyboard="Numeric"  Completed="MaxHpEntry_Completed" MaxLength="5" Placeholder="Input HP"/>
+
+                <Label  Text="Current HP" Grid.Row="4" Grid.Column="1" FontSize="10" HorizontalOptions="Center"/>
+                <Label x:Name="currentHpCounter" Text="" Grid.Row="5" Grid.Column="1" HorizontalOptions="Center" TextColor="Red" FontSize="20"/>
+                <Label Text="Crisis :" Grid.Column="0" Grid.Row="6" HorizontalOptions="Center" VerticalOptions="End"/>
+                <Label x:Name="crisisHp" Text="" Grid.Row="7" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Start" FontAttributes="Bold" TextColor="DarkRed" FontSize="20"/>
+                <Button x:Name="buttonHpp1" Text="+1" Grid.Column="1" Grid.Row="3" BackgroundColor="PaleVioletRed" Clicked="buttonHpp1_Clicked" />
+                <Button x:Name="buttonHpp2" Text="+2" Grid.Column="1" Grid.Row="2" BackgroundColor="PaleVioletRed" Clicked="buttonHpp2_Clicked" />
+                <Button x:Name="buttonHpp5" Text="+5" Grid.Column="1" Grid.Row="1" BackgroundColor="PaleVioletRed" Clicked="buttonHpp5_Clicked"/>
+                <Button x:Name="buttonHpp10" Text="+10" Grid.Column="1" Grid.Row="0" BackgroundColor="PaleVioletRed" Clicked="buttonHpp10_Clicked"/>
+                <Button x:Name="buttonHpm1" Text="-1" Grid.Column="1" Grid.Row="6" BackgroundColor="PaleVioletRed" Clicked="buttonHpm1_Clicked"/>
+                <Button x:Name="buttonHpm2" Text="-2" Grid.Column="1" Grid.Row="7" BackgroundColor="PaleVioletRed" Clicked="buttonHpm2_Clicked"/>
+                <Button x:Name="buttonHpm5" Text="-5" Grid.Column="1" Grid.Row="8" BackgroundColor="PaleVioletRed" Clicked="buttonHpm5_Clicked"/>
+                <Button x:Name="buttonHpm10" Text="-10" Grid.Column="1" Grid.Row="9" BackgroundColor="PaleVioletRed" Clicked="buttonHpm10_Clicked"/>
+
+                <Label Text="Max MP" Grid.Row="4" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" FontSize="10"/>
+                <Label x:Name="MaxMpReminder" Text="" Grid.Row="5" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label x:Name="MaxMpEntryLabel" Text="Max MP" Grid.Row="0" Grid.Column="2" VerticalTextAlignment="End" HorizontalTextAlignment="Center" FontSize="18"/>
+                <Entry x:Name="MaxMpEntry" Text="" Grid.Row="1" Grid.Column="2" Keyboard="Numeric" Completed="MaxMpEntry_Completed" MaxLength="5" Placeholder="Input MP"/>
+                
+                <Label Text="Current MP" Grid.Row="4" Grid.Column="3" FontSize="10" HorizontalOptions="Center"/>
+                <Label x:Name="currentMpCounter" Text="" Grid.Row="5" Grid.Column="3" HorizontalOptions="Center" TextColor="CornflowerBlue" FontSize="20"/>
+                <Button x:Name="buttonMpp1" Text="+1" Grid.Column="3" Grid.Row="3" BackgroundColor="CornflowerBlue" Clicked="buttonMpp1_Clicked"/>
+                <Button x:Name="buttonMpp2" Text="+2" Grid.Column="3" Grid.Row="2" BackgroundColor="CornflowerBlue" Clicked="buttonMpp2_Clicked"/>
+                <Button x:Name="buttonMpp5" Text="+5" Grid.Column="3" Grid.Row="1" BackgroundColor="CornflowerBlue" Clicked="buttonMpp5_Clicked"/>
+                <Button x:Name="buttonMpp10" Text="+10" Grid.Column="3" Grid.Row="0" BackgroundColor="CornflowerBlue" Clicked="buttonMpp10_Clicked"/>
+                <Button x:Name="buttonMpm1" Text="-1" Grid.Column="3" Grid.Row="6" BackgroundColor="CornflowerBlue" Clicked="buttonMpm1_Clicked"/>
+                <Button x:Name="buttonMpm2" Text="-2" Grid.Column="3" Grid.Row="7" BackgroundColor="CornflowerBlue" Clicked="buttonMpm2_Clicked"/>
+                <Button x:Name="buttonMpm5" Text="-5" Grid.Column="3" Grid.Row="8" BackgroundColor="CornflowerBlue" Clicked="buttonMpm5_Clicked"/>
+                <Button x:Name="buttonMpm10" Text="-10" Grid.Column="3" Grid.Row="9" BackgroundColor="CornflowerBlue" Clicked="buttonMpm10_Clicked"/>
+
+                <Label Grid.Row="10" HeightRequest="70"/>
+                <Button x:Name="hpResetButton" Text="HP RESET" Grid.Column="0" Grid.Row="12" FontSize="10" BackgroundColor="Gray" Clicked="hpResetButton_Clicked"/>
+                <Button x:Name="mpResetButton" Text="MP RESET" Grid.Column="2" Grid.Row="12" FontSize="10" BackgroundColor="Gray" Clicked="mpResetButton_Clicked"/>
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
