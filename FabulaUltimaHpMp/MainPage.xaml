@@ -4,81 +4,222 @@
              x:Class="FabulaUltimaHpMp.MainPage" BackgroundColor="Black">
 
     <ScrollView>
-        <VerticalStackLayout
+
+        <VerticalStackLayout IsVisible="True" x:Name="mainContentPage"
             Padding="30,0"
             Spacing="25">
-            <Label/>
-            <Grid RowSpacing="5">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+            <StackLayout x:Name="editLayout" IsVisible="False">
+                <Label/>
+                <Picker x:Name="profilePicker" Title="Select profile" SelectedIndexChanged="profilePicker_SelectedIndexChanged"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="deleteButton" Text="Delete" Grid.Column="1" HorizontalOptions="Center" Clicked="deleteButton_Clicked"/>
+                </Grid>
+                <Label Text="Profile name"/>
+                <Entry Placeholder="Input name" x:Name="ProfileNameEntry" Completed="ProfileNameEntry_Completed" MaxLength="20"/>
+                <Label Text="Max HP"/>
+                <Entry Placeholder="Input HP" Keyboard="Numeric" x:Name="MaxHpEntry" Completed="MaxHpEntry_Completed" MaxLength="6" TextColor="Red"/>
+                <Label Text="Max MP"/>
+                <Entry Placeholder="Input MP" Keyboard="Numeric" x:Name="MaxMpEntry" Completed="MaxMpEntry_Completed" MaxLength="6" TextColor="Red"/>
 
-                <Label Text="Max HP" Grid.Row="4" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" FontSize="10"/>
-                <Label x:Name="MaxHpReminder" Text="" Grid.Row="5" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"/>
-                <Label x:Name="MaxHpEntryLabel" Text="Max HP" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="End" FontSize="18"/>
-                <Entry x:Name="MaxHpEntry" Text="" Grid.Row="1" Grid.Column="0" Keyboard="Numeric"  Completed="MaxHpEntry_Completed" MaxLength="5" Placeholder="Input HP"/>
+                <Grid RowSpacing="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="Dexterity" Grid.Column="0" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Button Text="D12" Grid.Column="0" Grid.Row="1" HorizontalOptions="Center" x:Name="dexD12" Clicked="dexD12_Clicked" BackgroundColor="Gray"/>
+                    <Button Text="D10" Grid.Column="0" Grid.Row="2" HorizontalOptions="Center" x:Name="dexD10" Clicked="dexD10_Clicked" BackgroundColor="Gray"/>
+                    <Button Text="D8 " Grid.Column="0" Grid.Row="3" HorizontalOptions="Center" x:Name="dexD8" Clicked="dexD8_Clicked" BackgroundColor="Gray"/>
+                    <Button Text="D6 " Grid.Column="0" Grid.Row="4" HorizontalOptions="Center" x:Name="dexD6" Clicked="dexD6_Clicked" BackgroundColor="Gray"/>
 
-                <Label  Text="Current HP" Grid.Row="4" Grid.Column="1" FontSize="10" HorizontalOptions="Start"/>
-                
-                <Label x:Name="currentHpCounter" Text="" Grid.Row="5" Grid.Column="1" HorizontalOptions="Start" TextColor="Red" FontSize="20"/>
-                <Label x:Name="hpChange" Text="" Grid.Row="5" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" TextColor="PaleVioletRed" IsVisible="false"/>
+                    <Label Text="Insight" Grid.Column="1" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Button Text="D12" Grid.Column="1" Grid.Row="1" HorizontalOptions="Center" x:Name="insD12" Clicked="insD12_Clicked" BackgroundColor="Gray"/>
+                    <Button Text="D10" Grid.Column="1" Grid.Row="2" HorizontalOptions="Center" x:Name="insD10" Clicked="insD10_Clicked" BackgroundColor="Gray"/>
+                    <Button Text="D8 " Grid.Column="1" Grid.Row="3" HorizontalOptions="Center" x:Name="insD8" Clicked="insD8_Clicked" BackgroundColor="Gray"/>
+                    <Button Text="D6 " Grid.Column="1" Grid.Row="4" HorizontalOptions="Center" x:Name="insD6" Clicked="insD6_Clicked" BackgroundColor="Gray"/>
 
-                <Label Text="Crisis :" Grid.Column="0" Grid.Row="6" HorizontalOptions="Center" VerticalOptions="End"/>
-                <Label x:Name="crisisHp" Text="" Grid.Row="7" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Start" FontAttributes="Bold" TextColor="DarkRed" FontSize="20"/>
-                <Button x:Name="buttonHpp1" Text="+1" Grid.Column="1" Grid.Row="3" BackgroundColor="PaleVioletRed" Clicked="buttonHpp1_Clicked" />
-                <Button x:Name="buttonHpp2" Text="+2" Grid.Column="1" Grid.Row="2" BackgroundColor="PaleVioletRed" Clicked="buttonHpp2_Clicked" />
-                <Button x:Name="buttonHpp5" Text="+5" Grid.Column="1" Grid.Row="1" BackgroundColor="PaleVioletRed" Clicked="buttonHpp5_Clicked"/>
-                <Button x:Name="buttonHpp10" Text="+10" Grid.Column="1" Grid.Row="0" BackgroundColor="PaleVioletRed" Clicked="buttonHpp10_Clicked"/>
-                <Button x:Name="buttonHpm1" Text="-1" Grid.Column="1" Grid.Row="6" BackgroundColor="PaleVioletRed" Clicked="buttonHpm1_Clicked"/>
-                <Button x:Name="buttonHpm2" Text="-2" Grid.Column="1" Grid.Row="7" BackgroundColor="PaleVioletRed" Clicked="buttonHpm2_Clicked"/>
-                <Button x:Name="buttonHpm5" Text="-5" Grid.Column="1" Grid.Row="8" BackgroundColor="PaleVioletRed" Clicked="buttonHpm5_Clicked"/>
-                <Button x:Name="buttonHpm10" Text="-10" Grid.Column="1" Grid.Row="9" BackgroundColor="PaleVioletRed" Clicked="buttonHpm10_Clicked"/>
+                    <Label Text="Might" Grid.Column="2" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Button Text="D12" Grid.Column="2" Grid.Row="1" HorizontalOptions="Center" x:Name="migD12" Clicked="migD12_Clicked" BackgroundColor="Gray"/>
+                    <Button Text="D10" Grid.Column="2" Grid.Row="2" HorizontalOptions="Center" x:Name="migD10" Clicked="migD10_Clicked" BackgroundColor="Gray"/>
+                    <Button Text="D8 " Grid.Column="2" Grid.Row="3" HorizontalOptions="Center" x:Name="migD8" Clicked="migD8_Clicked" BackgroundColor="Gray"/>
+                    <Button Text="D6 " Grid.Column="2" Grid.Row="4" HorizontalOptions="Center" x:Name="migD6" Clicked="migD6_Clicked" BackgroundColor="Gray"/>
 
-                <Label Text="Max MP" Grid.Row="4" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" FontSize="10"/>
-                <Label x:Name="MaxMpReminder" Text="" Grid.Row="5" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center"/>
-                <Label x:Name="MaxMpEntryLabel" Text="Max MP" Grid.Row="0" Grid.Column="2" VerticalTextAlignment="End" HorizontalTextAlignment="Center" FontSize="18"/>
-                <Entry x:Name="MaxMpEntry" Text="" Grid.Row="1" Grid.Column="2" Keyboard="Numeric" Completed="MaxMpEntry_Completed" MaxLength="5" Placeholder="Input MP"/>
-                
-                <Label Text="Current MP" Grid.Row="4" Grid.Column="3" FontSize="10" HorizontalOptions="Center"/>
+                    <Label Text="Willpower" Grid.Column="3" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Button Text="D12" Grid.Column="3" Grid.Row="1" HorizontalOptions="Center" x:Name="wilD12" Clicked="wilD12_Clicked" BackgroundColor="Gray"/>
+                    <Button Text="D10" Grid.Column="3" Grid.Row="2" HorizontalOptions="Center" x:Name="wilD10" Clicked="wilD10_Clicked" BackgroundColor="Gray"/>
+                    <Button Text="D8 " Grid.Column="3" Grid.Row="3" HorizontalOptions="Center" x:Name="wilD8" Clicked="wilD8_Clicked" BackgroundColor="Gray"/>
+                    <Button Text="D6 " Grid.Column="3" Grid.Row="4" HorizontalOptions="Center" x:Name="wilD6" Clicked="wilD6_Clicked" BackgroundColor="Gray"/>
 
-                <Label x:Name="currentMpCounter" Text="" Grid.Row="5" Grid.Column="3" HorizontalOptions="Start" TextColor="CornflowerBlue" FontSize="20"/>
-                <Label x:Name="mpChange" Text="" Grid.Row="5" Grid.Column="3" HorizontalOptions="End" VerticalOptions="Center" TextColor="CornflowerBlue" IsVisible="false"/>
-                
-                <Button x:Name="buttonMpp1" Text="+1" Grid.Column="3" Grid.Row="3" BackgroundColor="CornflowerBlue" Clicked="buttonMpp1_Clicked"/>
-                <Button x:Name="buttonMpp2" Text="+2" Grid.Column="3" Grid.Row="2" BackgroundColor="CornflowerBlue" Clicked="buttonMpp2_Clicked"/>
-                <Button x:Name="buttonMpp5" Text="+5" Grid.Column="3" Grid.Row="1" BackgroundColor="CornflowerBlue" Clicked="buttonMpp5_Clicked"/>
-                <Button x:Name="buttonMpp10" Text="+10" Grid.Column="3" Grid.Row="0" BackgroundColor="CornflowerBlue" Clicked="buttonMpp10_Clicked"/>
-                <Button x:Name="buttonMpm1" Text="-1" Grid.Column="3" Grid.Row="6" BackgroundColor="CornflowerBlue" Clicked="buttonMpm1_Clicked"/>
-                <Button x:Name="buttonMpm2" Text="-2" Grid.Column="3" Grid.Row="7" BackgroundColor="CornflowerBlue" Clicked="buttonMpm2_Clicked"/>
-                <Button x:Name="buttonMpm5" Text="-5" Grid.Column="3" Grid.Row="8" BackgroundColor="CornflowerBlue" Clicked="buttonMpm5_Clicked"/>
-                <Button x:Name="buttonMpm10" Text="-10" Grid.Column="3" Grid.Row="9" BackgroundColor="CornflowerBlue" Clicked="buttonMpm10_Clicked"/>
 
-                <Label Grid.Row="10" HeightRequest="70"/>
-                <Button x:Name="hpResetButton" Text="HP RESET" Grid.Column="0" Grid.Row="12" FontSize="10" BackgroundColor="Gray" Clicked="hpResetButton_Clicked"/>
-                <Button x:Name="mpResetButton" Text="MP RESET" Grid.Column="2" Grid.Row="12" FontSize="10" BackgroundColor="Gray" Clicked="mpResetButton_Clicked"/>
-            </Grid>
+                </Grid>
+                <Label/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Text="Save profile" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="LightGreen" x:Name="saveProfile" Clicked="saveProfile_Clicked" IsEnabled="false"/>
+                    <Button Text="OK" Grid.Column="3" BackgroundColor="LightGreen" x:Name="finishEditButton" Clicked="finishEditButton_Clicked" IsEnabled="false"/>
+                </Grid>
 
+            </StackLayout>
+
+            <StackLayout x:Name="mainLayout" IsVisible="true">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+
+                <Grid RowSpacing="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Max HP" Grid.Row="4" Grid.Column="0" HorizontalOptions="Start"/>
+                    <Label x:Name="MaxHpReminder" Text="" Grid.Row="5" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Start" FontSize="18" FontAttributes="Bold"/>
+                    <Label  Text="Current HP" Grid.Row="4" Grid.Column="1" FontSize="10" HorizontalOptions="Start"/>
+                    <Label x:Name="currentHpCounter" Text="" Grid.Row="5" Grid.Column="1" HorizontalOptions="Start" TextColor="Red" FontSize="20"/>
+                    <Label Text="Crisis :" Grid.Column="0" Grid.Row="6" HorizontalOptions="Center" VerticalOptions="End"/>
+                    <Label x:Name="crisisHp" Text="" Grid.Row="7" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Start" FontAttributes="Bold" TextColor="DarkRed" FontSize="20"/>
+                    <Label x:Name="hpChange" Text="" Grid.Row="5" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" TextColor="PaleVioletRed" IsVisible="false"/>
+                    <Button x:Name="buttonHpp1" Text="+1" Grid.Column="1" Grid.Row="3" BackgroundColor="PaleVioletRed" Clicked="buttonHpp1_Clicked" />
+                    <Button x:Name="buttonHpp2" Text="+2" Grid.Column="1" Grid.Row="2" BackgroundColor="PaleVioletRed" Clicked="buttonHpp2_Clicked" />
+                    <Button x:Name="buttonHpp5" Text="+5" Grid.Column="1" Grid.Row="1" BackgroundColor="PaleVioletRed" Clicked="buttonHpp5_Clicked"/>
+                    <Button x:Name="buttonHpp10" Text="+10" Grid.Column="1" Grid.Row="0" BackgroundColor="PaleVioletRed" Clicked="buttonHpp10_Clicked"/>
+                    <Button x:Name="buttonHpm1" Text="-1" Grid.Column="1" Grid.Row="6" BackgroundColor="PaleVioletRed" Clicked="buttonHpm1_Clicked"/>
+                    <Button x:Name="buttonHpm2" Text="-2" Grid.Column="1" Grid.Row="7" BackgroundColor="PaleVioletRed" Clicked="buttonHpm2_Clicked"/>
+                    <Button x:Name="buttonHpm5" Text="-5" Grid.Column="1" Grid.Row="8" BackgroundColor="PaleVioletRed" Clicked="buttonHpm5_Clicked"/>
+                    <Button x:Name="buttonHpm10" Text="-10" Grid.Column="1" Grid.Row="9" BackgroundColor="PaleVioletRed" Clicked="buttonHpm10_Clicked" />
+
+                    <Label Text="Max MP" Grid.Row="4" Grid.Column="2" HorizontalOptions="Start"/>
+                    <Label x:Name="MaxMpReminder" Text="" Grid.Row="5" Grid.Column="2" HorizontalOptions="Start" VerticalOptions="Start" FontSize="18" FontAttributes="Bold"/>
+                    <Label Text="Current MP" Grid.Row="4" Grid.Column="3" FontSize="10" HorizontalOptions="Center"/>
+                    <Label x:Name="currentMpCounter" Text="" Grid.Row="5" Grid.Column="3" HorizontalOptions="Start" TextColor="CornflowerBlue" FontSize="20"/>
+                    <Label x:Name="mpChange" Text="" Grid.Row="5" Grid.Column="3" HorizontalOptions="End" VerticalOptions="Center" TextColor="CornflowerBlue" IsVisible="false"/>
+                    <Button x:Name="buttonMpp1" Text="+1" Grid.Column="3" Grid.Row="3" BackgroundColor="CornflowerBlue" Clicked="buttonMpp1_Clicked"/>
+                    <Button x:Name="buttonMpp2" Text="+2" Grid.Column="3" Grid.Row="2" BackgroundColor="CornflowerBlue" Clicked="buttonMpp2_Clicked"/>
+                    <Button x:Name="buttonMpp5" Text="+5" Grid.Column="3" Grid.Row="1" BackgroundColor="CornflowerBlue" Clicked="buttonMpp5_Clicked"/>
+                    <Button x:Name="buttonMpp10" Text="+10" Grid.Column="3" Grid.Row="0" BackgroundColor="CornflowerBlue" Clicked="buttonMpp10_Clicked"/>
+                    <Button x:Name="buttonMpm1" Text="-1" Grid.Column="3" Grid.Row="6" BackgroundColor="CornflowerBlue" Clicked="buttonMpm1_Clicked"/>
+                    <Button x:Name="buttonMpm2" Text="-2" Grid.Column="3" Grid.Row="7" BackgroundColor="CornflowerBlue" Clicked="buttonMpm2_Clicked"/>
+                    <Button x:Name="buttonMpm5" Text="-5" Grid.Column="3" Grid.Row="8" BackgroundColor="CornflowerBlue" Clicked="buttonMpm5_Clicked"/>
+                    <Button x:Name="buttonMpm10" Text="-10" Grid.Column="3" Grid.Row="9" BackgroundColor="CornflowerBlue" Clicked="buttonMpm10_Clicked"/>
+                </Grid>
+                <Label/>
+                <Grid RowSpacing="5" ColumnSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Text="Enraged" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" BackgroundColor="Gray" x:Name="enrageButton" Clicked="enrageButton_Clicked"/>
+                    <Button Text="Poison" Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="Center" BackgroundColor="Gray" x:Name="poisonButton" Clicked="poisonButton_Clicked"/>
+                    <Grid Grid.Column="0" Grid.Row="1" RowSpacing="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Dexterity" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Rotation="270" HorizontalOptions="End" VerticalOptions="Start" WidthRequest="100" FontSize="13"/>
+                        <Button Text="Slow" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" FontSize="10" WidthRequest="70" BackgroundColor="Gray" x:Name="slowButton" Clicked="slowButton_Clicked"/>
+                        <Button x:Name="dexDiceButton" Text="D10" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" FontSize="13" BackgroundColor="LightGreen"/>
+                    </Grid>
+
+                    <Grid Grid.Column="1" Grid.Row="1" RowSpacing="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Insight" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Rotation="270" HorizontalOptions="End" VerticalOptions="Start" WidthRequest="100" FontSize="13"/>
+                        <Button Text="Dazed" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" FontSize="10" WidthRequest="70" BackgroundColor="Gray" x:Name="dazeButton" Clicked="dazeButton_Clicked"/>
+                        <Button x:Name="insDiceButton" Text="D10" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" FontSize="13" BackgroundColor="LightGreen"/>
+                    </Grid>
+
+                    <Grid Grid.Column="2" Grid.Row="1" RowSpacing="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Might" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Rotation="270" HorizontalOptions="End" VerticalOptions="Start" WidthRequest="100" FontSize="13"/>
+                        <Button Text="Weak" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" FontSize="10" WidthRequest="70" BackgroundColor="Gray" x:Name="weakButton" Clicked="weakButton_Clicked"/>
+                        <Button x:Name="migDiceButton" Text="D10" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" FontSize="13" BackgroundColor="LightGreen"/>
+                    </Grid>
+
+                    <Grid Grid.Column="3" Grid.Row="1" RowSpacing="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Willpower" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Rotation="270" HorizontalOptions="End" VerticalOptions="Start" WidthRequest="100" FontSize="13"/>
+                        <Button Text="Shaken" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" FontSize="10" WidthRequest="70" BackgroundColor="Gray" x:Name="shakenButton" Clicked="shakenButton_Clicked"/>
+                        <Button x:Name="wilDiceButton" Text="D10" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" FontSize="13" BackgroundColor="LightGreen"/>
+                    </Grid>
+
+                </Grid>
+                <Label/>
+                <Button Text="To edit" Grid.Column="0" Grid.Row="0" HorizontalOptions="Center" BackgroundColor="SlateGray" x:Name="ToEditButton" Clicked="ToEditButton_Clicked"/>
+
+            </StackLayout>
         </VerticalStackLayout>
     </ScrollView>
 
